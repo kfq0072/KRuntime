@@ -21,7 +21,6 @@ NSString const * kExposeController = @"exposeController";//随意一个标志
     NSLog(@"%s ",__func__);
 }
 
-#pragma mark - 分类关联
 -(void)setName:(NSString *)name {
     objc_setAssociatedObject(self, &kExposeController, name, OBJC_ASSOCIATION_COPY);
 //    objc_removeAssociatedObjects(name);//移除关联

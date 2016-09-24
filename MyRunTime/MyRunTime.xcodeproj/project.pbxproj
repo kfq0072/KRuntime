@@ -19,6 +19,11 @@
 		FBBF7DC51D87F94900303AFB /* ExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBF7DC41D87F94900303AFB /* ExchangeViewController.m */; };
 		FBBF7DC81D87F97300303AFB /* MyViewController+swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBF7DC71D87F97300303AFB /* MyViewController+swizzling.m */; };
 		FBC298231D8E8F3F0043AC92 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC298221D8E8F3F0043AC92 /* BaseViewController.m */; };
+		FBC298B51D922AC40043AC92 /* LoadFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC298B41D922AC40043AC92 /* LoadFramework.m */; };
+		FBC298B81D9230C30043AC92 /* OnLoadBundlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC298B71D9230C30043AC92 /* OnLoadBundlesViewController.m */; };
+		FBC298DA1D93A2B60043AC92 /* GetIMP.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC298D91D93A2B60043AC92 /* GetIMP.m */; };
+		FBC299011D93BB290043AC92 /* AddNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC299001D93BB290043AC92 /* AddNewViewController.m */; };
+		FBC299041D9517570043AC92 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC299031D9517570043AC92 /* Tools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,16 @@
 		FBBF7DC71D87F97300303AFB /* MyViewController+swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MyViewController+swizzling.m"; sourceTree = "<group>"; };
 		FBC298211D8E8F3F0043AC92 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		FBC298221D8E8F3F0043AC92 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		FBC298B31D922AC40043AC92 /* LoadFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadFramework.h; sourceTree = "<group>"; };
+		FBC298B41D922AC40043AC92 /* LoadFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadFramework.m; sourceTree = "<group>"; };
+		FBC298B61D9230C30043AC92 /* OnLoadBundlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnLoadBundlesViewController.h; sourceTree = "<group>"; };
+		FBC298B71D9230C30043AC92 /* OnLoadBundlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnLoadBundlesViewController.m; sourceTree = "<group>"; };
+		FBC298D81D93A2B60043AC92 /* GetIMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetIMP.h; sourceTree = "<group>"; };
+		FBC298D91D93A2B60043AC92 /* GetIMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetIMP.m; sourceTree = "<group>"; };
+		FBC298FF1D93BB290043AC92 /* AddNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewViewController.h; sourceTree = "<group>"; };
+		FBC299001D93BB290043AC92 /* AddNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewViewController.m; sourceTree = "<group>"; };
+		FBC299021D9517570043AC92 /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
+		FBC299031D9517570043AC92 /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,11 +91,17 @@
 		FBBF7D9F1D87DAB800303AFB /* MyRunTime */ = {
 			isa = PBXGroup;
 			children = (
+				FBC299021D9517570043AC92 /* Tools.h */,
+				FBC299031D9517570043AC92 /* Tools.m */,
+				FBC298DB1D93A9E70043AC92 /* Add */,
+				FBC298AF1D92288E0043AC92 /* DyLoadFramewrok */,
 				FBC298201D8E8F230043AC92 /* Base */,
 				FBBF7DA31D87DAB800303AFB /* AppDelegate.h */,
 				FBBF7DA41D87DAB800303AFB /* AppDelegate.m */,
 				FBBF7DA61D87DAB800303AFB /* ViewController.h */,
 				FBBF7DA71D87DAB800303AFB /* ViewController.m */,
+				FBC298D81D93A2B60043AC92 /* GetIMP.h */,
+				FBC298D91D93A2B60043AC92 /* GetIMP.m */,
 				FBBF7DC31D87F94900303AFB /* ExchangeViewController.h */,
 				FBBF7DC41D87F94900303AFB /* ExchangeViewController.m */,
 				FBBF7DC61D87F97300303AFB /* MyViewController+swizzling.h */,
@@ -115,6 +136,26 @@
 				FBC298221D8E8F3F0043AC92 /* BaseViewController.m */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		FBC298AF1D92288E0043AC92 /* DyLoadFramewrok */ = {
+			isa = PBXGroup;
+			children = (
+				FBC298B31D922AC40043AC92 /* LoadFramework.h */,
+				FBC298B41D922AC40043AC92 /* LoadFramework.m */,
+				FBC298B61D9230C30043AC92 /* OnLoadBundlesViewController.h */,
+				FBC298B71D9230C30043AC92 /* OnLoadBundlesViewController.m */,
+			);
+			path = DyLoadFramewrok;
+			sourceTree = "<group>";
+		};
+		FBC298DB1D93A9E70043AC92 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				FBC298FF1D93BB290043AC92 /* AddNewViewController.h */,
+				FBC299001D93BB290043AC92 /* AddNewViewController.m */,
+			);
+			path = Add;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +229,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBBF7DC81D87F97300303AFB /* MyViewController+swizzling.m in Sources */,
+				FBC299011D93BB290043AC92 /* AddNewViewController.m in Sources */,
 				FBC298231D8E8F3F0043AC92 /* BaseViewController.m in Sources */,
 				FBBF7DA81D87DAB800303AFB /* ViewController.m in Sources */,
 				FBBF7DBC1D87E25F00303AFB /* Son.m in Sources */,
+				FBC298B51D922AC40043AC92 /* LoadFramework.m in Sources */,
+				FBC298DA1D93A2B60043AC92 /* GetIMP.m in Sources */,
+				FBC299041D9517570043AC92 /* Tools.m in Sources */,
 				FBBF7DC21D87E49F00303AFB /* Son+BB.m in Sources */,
 				FBBF7DA51D87DAB800303AFB /* AppDelegate.m in Sources */,
+				FBC298B81D9230C30043AC92 /* OnLoadBundlesViewController.m in Sources */,
 				FBBF7DB91D87E1A400303AFB /* Person.m in Sources */,
 				FBBF7DA21D87DAB800303AFB /* main.m in Sources */,
 				FBBF7DC51D87F94900303AFB /* ExchangeViewController.m in Sources */,
@@ -310,10 +356,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyRunTime/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Allen.MyRunTime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tcl.MyRunTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-undeclared-selector";
 			};
 			name = Debug;
 		};
@@ -322,10 +368,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyRunTime/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Allen.MyRunTime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tcl.MyRunTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-undeclared-selector";
 			};
 			name = Release;
 		};

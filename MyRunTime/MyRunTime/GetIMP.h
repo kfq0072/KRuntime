@@ -1,13 +1,13 @@
 //
-//  Person.h
+//  GetIMP.h
 //  MyRunTime
 //
-//  Created by kefoqing on 16/9/13.
+//  Created by kefoqing on 16/9/22.
 //  Copyright © 2016年 kefoqing. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface Person : NSObject
-@property (nonatomic, copy)NSString *sex;
+@interface GetIMP : NSObject
+
 @end

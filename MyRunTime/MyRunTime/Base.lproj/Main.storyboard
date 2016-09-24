@@ -31,6 +31,20 @@
                                     <action selector="BtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f8b-RL-o2v"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YnP-bH-Z4Y">
+                                <rect key="frame" x="91" y="318" width="89" height="30"/>
+                                <state key="normal" title="LoadBundles"/>
+                                <connections>
+                                    <segue destination="nQT-At-rtx" kind="push" id="3TA-BA-vn7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qr-QN-crM">
+                                <rect key="frame" x="79" y="375" width="112" height="30"/>
+                                <state key="normal" title="PushAddNewVC"/>
+                                <connections>
+                                    <segue destination="p12-5P-MXJ" kind="push" id="QXy-vQ-FBE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -58,6 +72,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zy8-tg-l4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1617" y="50"/>
+        </scene>
+        <!--On Load Bundles View Controller-->
+        <scene sceneID="TEO-Ms-SvM">
+            <objects>
+                <viewController id="nQT-At-rtx" customClass="OnLoadBundlesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7r1-6r-Fsp"/>
+                        <viewControllerLayoutGuide type="bottom" id="QC7-Oq-KeY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q5U-1d-ZkU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="211-4T-Kzp">
+                                <rect key="frame" x="73" y="295" width="106" height="30"/>
+                                <state key="normal" title="onLoadBundles"/>
+                                <connections>
+                                    <action selector="loadClick:" destination="nQT-At-rtx" eventType="touchUpInside" id="1PJ-av-Wr5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rg3-hB-1oq">
+                                <rect key="frame" x="73" y="344" width="97" height="30"/>
+                                <state key="normal" title="onActiveClass"/>
+                                <connections>
+                                    <action selector="activeClick:" destination="nQT-At-rtx" eventType="touchUpInside" id="qDm-Id-enL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="d3C-Nz-BeP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X5H-Wu-Fex" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1560" y="675"/>
+        </scene>
+        <!--Add New View Controller-->
+        <scene sceneID="xSF-UL-5w0">
+            <objects>
+                <viewController id="p12-5P-MXJ" customClass="AddNewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UhK-W4-oGE"/>
+                        <viewControllerLayoutGuide type="bottom" id="QN6-F8-uWl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TxD-mf-w6x">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaZ-vc-SrZ">
+                                <rect key="frame" x="70" y="204" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="BtnAction:" destination="p12-5P-MXJ" eventType="touchUpInside" id="bfM-bJ-ilJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="O7F-lF-zk3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VX4-Il-18v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="434" y="260"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sTO-Fz-F2L">

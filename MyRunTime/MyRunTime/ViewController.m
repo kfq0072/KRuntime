@@ -12,40 +12,63 @@
 #import "Son.h"
 #import "Son+BB.h"
 #import "ExchangeViewController.h"
+#import "GetIMP.h"
+#import "Tools.h"
+
 
 @interface ViewController () {
     BOOL _flag;
 }
 - (IBAction)BtnAction:(id)sender;
 @property (nonatomic, copy)NSArray *myArray;
-
+@property (nonatomic, strong)NSString *str1;
+@property (nonatomic, weak)NSString *str2;
 @end
 
 @implementation ViewController
+- (void)testPoint:(NSString*)str {
+    
+}
+- (void)testPoint {
+    char *p;
+    NSLog(@"指针长度： %ld",sizeof(p));
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    GetIMP *kIMP = [[GetIMP alloc] init];
+    
+    [self testPoint];
+    
+    _str1 = [[NSString alloc] initWithUTF8String:"string 1"];;
+    _str2 = _str1;
+    _str1 = nil;
+    NSLog(@"%@",_str2);//当str2为weak时，_str1为创建堆内存，_str2为null
     [self testRuntimeCategroy];
     [self performSelectorOnMainThread:@selector(myVCFunction:) withObject:@"dy" waitUntilDone:NO];
+       // Do any additional setup after loading the view, typically from a nib.
 }
 - (void)testInitialize {
     Person * a = [Person new];
     Son *s = [Son new];
 }
 
-#pragma mark - 测试runtime 对象关联
 - (void)testRuntimeCategroy {
     Son *s = [Son new];
     s.name = @"hello categroy";
     NSLog(@"categroy property:%@",s.name);
 }
-
+-(void)viewWillAppear:(BOOL)animated {
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
-#pragma mark - 测试runtime消息转发
+
 //对应的类方法
 +(BOOL)resolveClassMethod:(SEL)sel {
     return YES;
@@ -54,9 +77,11 @@
 +(BOOL)resolveInstanceMethod:(SEL)sel {
     //可以动态指向另外一个方法
     if (sel == @selector(myVCFunction:)) {
-//        class_addMethod([self class], sel, (IMP)dynamic_show, "v@:@");
+        class_addMethod([self class], sel, (IMP)dynamic_show, "v@:@");
+         return YES;
     }
-    return YES;
+    return [super resolveInstanceMethod:sel];
+   
 }
 
 //2.转给目标target，这个对象执行aSelector方法
@@ -86,39 +111,24 @@ void dynamic_show(id self ,SEL _cmd,id param1) {
     NSLog(@"动态添加方法:%@",param1);
 }
 
-#pragma mark - runtime 相关类的操作
-- (IBAction)BtnAction:(id)sender {
-    unsigned int count;
-    //获取属性列表
-    objc_property_t *propertyList = class_copyPropertyList([self class], &count);
-    for (unsigned int i=0; i<count; i++) {
-        const char *propertyName = property_getName(propertyList[i]);
-        NSLog(@"property---->%@", [NSString stringWithUTF8String:propertyName]);
-    }
-    
-    //获取方法列表
-    Method *methodList = class_copyMethodList([self class], &count);
-    for (unsigned int i; i<count; i++) {
-        Method method = methodList[i];
-        NSLog(@"method---->%@", NSStringFromSelector(method_getName(method)));
-    }
-    
-    //获取成员变量列表
-    Ivar *ivarList = class_copyIvarList([self class], &count);
-    for (unsigned int i; i<count; i++) {
-        Ivar myIvar = ivarList[i];
-        const char *ivarName = ivar_getName(myIvar);
-        NSLog(@"Ivar---->%@", [NSString stringWithUTF8String:ivarName]);
-    }
-    
-    //获取协议列表
-    __unsafe_unretained Protocol **protocolList = class_copyProtocolList([self class], &count);
-    for (unsigned int i; i<count; i++) {
-        Protocol *myProtocal = protocolList[i];
-        const char *protocolName = protocol_getName(myProtocal);
-        NSLog(@"protocol---->%@", [NSString stringWithUTF8String:protocolName]);
-    }
 
+- (IBAction)BtnAction:(id)sender {
+
+    NSArray *iVars = [Tools getClassIVarNames:[self class]];
+    NSLog(@"成员变量列表:%@",iVars);
+    
+    NSArray *methodLists = [Tools getClassMethodList:[self class]];
+    NSLog(@"方法列表:%@",methodLists);
+    
+    NSArray *proLists = [Tools getClassPropertyList:[self class]];
+    NSLog(@"属性列表:%@",proLists);
+    
+    NSArray *protocolLists = [Tools getClassProtocolList:[self class]];
+    NSLog(@"协议列表:%@",protocolLists);
+    
 }
 
+-(void)dealloc {
+    
+}
 @end

@@ -14,7 +14,5 @@
 @implementation BaseViewController
 - (void)copyObj {
     ExchangeViewController *myVC = [ExchangeViewController new];
-
-
 }
 @end
