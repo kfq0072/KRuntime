@@ -6,15 +6,15 @@
 //  Copyright © 2016年 kefoqing. All rights reserved.
 //
 
-#import "LoadFramework.h"
+#import "LoadFrameworkKit.h"
 #define  DocumentDirectory [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 #define  FrameworkPath [DocumentDirectory stringByAppendingPathComponent:@"Framework"]
-@interface LoadFramework() {
+@interface LoadFrameworkKit() {
    
 }
 @property (nonatomic, strong) NSMutableArray *libSuccessLoadArray;
 @end
-@implementation LoadFramework
+@implementation LoadFrameworkKit
 
 - (NSMutableArray*)onLoadFramewrok {
      NSArray * fwList = [self getFramewrokArray];

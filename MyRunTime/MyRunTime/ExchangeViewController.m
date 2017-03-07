@@ -9,12 +9,8 @@
 #import "ExchangeViewController.h"
 
 @implementation ExchangeViewController
-- (void)myVCFunction:(id)param {
+- (void)ExchangeMethodFunction:(id)param {
     NSLog(@"%s,参数：%@",__FUNCTION__,param);
 }
 
-//-(void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    NSLog(@"%s",__FUNCTION__);
-//}
 @end

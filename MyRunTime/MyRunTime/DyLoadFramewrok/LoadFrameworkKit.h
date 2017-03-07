@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LoadFramework : NSObject
+@interface LoadFrameworkKit : NSObject
 - (NSMutableArray*)onLoadFramewrok;
 - (id)onActiveFrameworkClass :(id)obj;
 @end

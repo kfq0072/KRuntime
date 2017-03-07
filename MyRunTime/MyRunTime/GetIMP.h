@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface GetIMP : NSObject
-
++ (void)testGetIMPFormSelector;
 @end

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddNewViewController : UIViewController
+@interface DyAddNewClassViewController : UIViewController
 
 @end

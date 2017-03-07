@@ -7,9 +7,9 @@
 //
 
 #import "OnLoadBundlesViewController.h"
-#import "LoadFramework.h"
+#import "LoadFrameworkKit.h"
 @interface OnLoadBundlesViewController (){
-    LoadFramework *_lfw;
+    LoadFrameworkKit *_lfw;
     NSArray *_bundleArray;
 }
 
@@ -27,15 +27,19 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)testOnLoadBundles {
-    _lfw = [LoadFramework new];
+    _lfw = [LoadFrameworkKit new];
    _bundleArray =  [_lfw onLoadFramewrok];
 }
 - (IBAction)loadClick:(id)sender {
    [self testOnLoadBundles];
 }
 - (IBAction)activeClick:(id)sender {
-   NSObject *instance = [_lfw onActiveFrameworkClass:[_bundleArray objectAtIndex:0]];
-    [instance performSelector:@selector(hello) withObject:self withObject:nil];
+    if (_bundleArray && [_bundleArray count]) {
+        for (id obj in _bundleArray) {
+            NSObject *instance = [_lfw onActiveFrameworkClass:obj];
+            [instance performSelector:@selector(hello) withObject:self withObject:nil];
+        }
+    }
 }
 
 /*

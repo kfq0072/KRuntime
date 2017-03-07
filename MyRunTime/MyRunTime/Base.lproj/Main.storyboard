@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wXm-iX-0vo">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wXm-iX-0vo">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,45 +15,49 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZA-fd-edt">
-                                <rect key="frame" x="83" y="239" width="120" height="30"/>
+                                <frame key="frameInset" minX="83" minY="239" width="120" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="pushExchangeVC"/>
                                 <connections>
                                     <segue destination="TeC-G7-5Qa" kind="push" id="XgP-62-xLN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyn-Lr-NFs">
-                                <rect key="frame" x="112" y="163" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <frame key="frameInset" minX="92" minY="163" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Runtime test"/>
                                 <connections>
                                     <action selector="BtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f8b-RL-o2v"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YnP-bH-Z4Y">
-                                <rect key="frame" x="91" y="318" width="89" height="30"/>
+                                <frame key="frameInset" minX="91" minY="318" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="LoadBundles"/>
                                 <connections>
                                     <segue destination="nQT-At-rtx" kind="push" id="3TA-BA-vn7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qr-QN-crM">
-                                <rect key="frame" x="79" y="375" width="112" height="30"/>
+                                <frame key="frameInset" minX="79" minY="375" width="112" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="PushAddNewVC"/>
                                 <connections>
                                     <segue destination="p12-5P-MXJ" kind="push" id="QXy-vQ-FBE"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="NrJ-T1-sIH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="216"/>
+            <point key="canvasLocation" x="878" y="-476"/>
         </scene>
         <!--Exchange View Controller-->
         <scene sceneID="Qtp-Zi-u5u">
@@ -63,15 +68,15 @@
                         <viewControllerLayoutGuide type="bottom" id="nn7-Lp-HhT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="X3h-QY-OPq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="a6P-d9-dTP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zy8-tg-l4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="50"/>
+            <point key="canvasLocation" x="1609" y="-476"/>
         </scene>
         <!--On Load Bundles View Controller-->
         <scene sceneID="TEO-Ms-SvM">
@@ -82,31 +87,33 @@
                         <viewControllerLayoutGuide type="bottom" id="QC7-Oq-KeY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Q5U-1d-ZkU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="211-4T-Kzp">
-                                <rect key="frame" x="73" y="295" width="106" height="30"/>
+                                <frame key="frameInset" minX="73" minY="295" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="onLoadBundles"/>
                                 <connections>
                                     <action selector="loadClick:" destination="nQT-At-rtx" eventType="touchUpInside" id="1PJ-av-Wr5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rg3-hB-1oq">
-                                <rect key="frame" x="73" y="344" width="97" height="30"/>
+                                <frame key="frameInset" minX="73" minY="344" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="onActiveClass"/>
                                 <connections>
                                     <action selector="activeClick:" destination="nQT-At-rtx" eventType="touchUpInside" id="qDm-Id-enL"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="d3C-Nz-BeP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X5H-Wu-Fex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1560" y="675"/>
+            <point key="canvasLocation" x="1625" y="187"/>
         </scene>
         <!--Add New View Controller-->
         <scene sceneID="xSF-UL-5w0">
@@ -117,24 +124,25 @@
                         <viewControllerLayoutGuide type="bottom" id="QN6-F8-uWl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TxD-mf-w6x">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaZ-vc-SrZ">
-                                <rect key="frame" x="70" y="204" width="46" height="30"/>
+                                <frame key="frameInset" minX="70" minY="204" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="BtnAction:" destination="p12-5P-MXJ" eventType="touchUpInside" id="bfM-bJ-ilJ"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="O7F-lF-zk3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VX4-Il-18v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="434" y="260"/>
+            <point key="canvasLocation" x="839" y="299"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sTO-Fz-F2L">

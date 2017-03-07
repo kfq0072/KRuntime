@@ -9,13 +9,16 @@
 #import "Son.h"
 
 @implementation Son
-//ios app启动，在 main 函数之前执行的,所有类都会自动调用此函数(不用初始化),我们用它来初始化静态变量，先是super类，然后是子类
+
+//ios app启动，所有类都会自动调用此函数,它来初始化静态变量
 + (void)load{
     NSLog(@"%s ",__func__);
 }
+//+ initialize 方法的调用看起来会更合理，通常在它里面写代码比在 + load 里写更好。+ initialize 很有趣，因为它是懒调用的，也有可能完全不被调用。类第一次被加载时，
 + (void)initialize{
     NSLog(@"%s ",__func__);
 }
+
 - (instancetype)init{
     if (self = [super init]) {
         NSLog(@"%s",__func__);

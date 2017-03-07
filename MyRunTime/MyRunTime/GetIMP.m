@@ -10,19 +10,14 @@
 #import <objc/runtime.h>
 
 @implementation GetIMP
--(instancetype)init {
-    if (self = [super init]) {
-        [self getIMPFormSelector:@selector(test1)];
-    }
-    return self;
-}
 
 - (void)test1 {
     NSLog(@"%s",__FUNCTION__);
 }
 
-- (void)getIMPFormSelector:(SEL)aSelector {
-//    1.
++ (void)testGetIMPFormSelector {
+    SEL aSelector = @selector(test1);
+//    1.获取方法实现的两种形式
     IMP instanceIMP1 = class_getMethodImplementation(objc_getClass("GetIMP"), aSelector);
     
     IMP classIMP1 = class_getMethodImplementation(objc_getMetaClass("GetIMP"), aSelector);

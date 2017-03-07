@@ -6,17 +6,23 @@
 //  Copyright © 2016年 kefoqing. All rights reserved.
 //
 
-#import "AddNewViewController.h"
-#import "Tools.h"
+#import "DyAddNewClassViewController.h"
+#import "RuntimeKit.h"
 #import <objc/runtime.h>
 
+@protocol FatherProtocol <NSObject>
 
-@interface AddNewViewController(){
+- (void)testFatherProtocol;
+
+@end
+
+@interface DyAddNewClassViewController(){
 
 }
 @end
 
-@implementation AddNewViewController
+@implementation DyAddNewClassViewController
+
 -(void)viewDidLoad {
 
 }
@@ -26,23 +32,15 @@
     id instance = [[tmpClass alloc] init];
     NSLog(@"新增对象：%@",instance);
 
-    NSArray *iVars = [Tools getClassIVarNames:[instance class]];
-    NSLog(@"成员变量列表:%@",iVars);
-    
-    NSArray *methodLists = [Tools getClassMethodList:[instance class]];
-    NSLog(@"方法列表:%@",methodLists);
-    
-    NSArray *proLists = [Tools getClassPropertyList:[instance class]];
-    NSLog(@"属性列表:%@",proLists);
-    
-    NSArray *protocolLists = [Tools getClassProtocolList:[instance class]];
-    NSLog(@"协议列表:%@",protocolLists);
+    Class class = [instance class];
+    NSLog(@"className: %@",[RuntimeKit fetchClassName:class]);
+    NSLog(@"IvarList: %@",[RuntimeKit fetchIvarList:class]);
+    NSLog(@"fetchPropertyList:%@",[RuntimeKit fetchPropertyList:class]);
+    NSLog(@"fetchMethodList:%@",[RuntimeKit fetchMethodList:class]);
+    NSLog(@"fetchProtocolList:%@",[RuntimeKit fetchProtocolList:class]);
     
 }
 
-
-- (void)testInstance {
-   }
 - (Class)testAllocateClassPair {
     const char * className = "Father";
     Class kclass = objc_getClass(className);
@@ -69,7 +67,7 @@
     class_addMethod(kclass, @selector(getFatherName), (IMP)getFatherName, "v@:");
     
     //TODO:添加协议
-//    class_addProtocol(kclass, <#Protocol *protocol#>)
+//    class_addProtocol(kclass, fatherp)
     objc_registerClassPair(kclass);
     
     return kclass;
@@ -80,6 +78,6 @@ static void setFatherName(id self,SEL cmd,id value) {
     NSLog(@"call setFatherName");
 }
 static void getFatherName(id self,SEL cmd) {
-    NSLog(@"call setFatherName");
+    NSLog(@"call getFatherName");
 }
 @end

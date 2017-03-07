@@ -13,7 +13,7 @@
 #import "Son+BB.h"
 #import "ExchangeViewController.h"
 #import "GetIMP.h"
-#import "Tools.h"
+#import "RuntimeKit.h"
 
 
 @interface ViewController () {
@@ -26,35 +26,16 @@
 @end
 
 @implementation ViewController
-- (void)testPoint:(NSString*)str {
-    
-}
-- (void)testPoint {
-    char *p;
-    NSLog(@"指针长度： %ld",sizeof(p));
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    GetIMP *kIMP = [[GetIMP alloc] init];
+    [GetIMP testGetIMPFormSelector];
     
-    [self testPoint];
-    
-    _str1 = [[NSString alloc] initWithUTF8String:"string 1"];;
-    _str2 = _str1;
-    _str1 = nil;
-    NSLog(@"%@",_str2);//当str2为weak时，_str1为创建堆内存，_str2为null
     [self testRuntimeCategroy];
-    [self performSelectorOnMainThread:@selector(myVCFunction:) withObject:@"dy" waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(ExchangeVCFunction:) withObject:@"dy" waitUntilDone:NO];
        // Do any additional setup after loading the view, typically from a nib.
 }
-- (void)testInitialize {
-    Person * a = [Person new];
-    Son *s = [Son new];
-}
-
 - (void)testRuntimeCategroy {
     Son *s = [Son new];
     s.name = @"hello categroy";
@@ -76,7 +57,7 @@
 //1.对应的实例方法
 +(BOOL)resolveInstanceMethod:(SEL)sel {
     //可以动态指向另外一个方法
-    if (sel == @selector(myVCFunction:)) {
+    if (sel == @selector(ExchangeVCFunction:)) {
         class_addMethod([self class], sel, (IMP)dynamic_show, "v@:@");
          return YES;
     }
@@ -114,17 +95,12 @@ void dynamic_show(id self ,SEL _cmd,id param1) {
 
 - (IBAction)BtnAction:(id)sender {
 
-    NSArray *iVars = [Tools getClassIVarNames:[self class]];
-    NSLog(@"成员变量列表:%@",iVars);
-    
-    NSArray *methodLists = [Tools getClassMethodList:[self class]];
-    NSLog(@"方法列表:%@",methodLists);
-    
-    NSArray *proLists = [Tools getClassPropertyList:[self class]];
-    NSLog(@"属性列表:%@",proLists);
-    
-    NSArray *protocolLists = [Tools getClassProtocolList:[self class]];
-    NSLog(@"协议列表:%@",protocolLists);
+    Class class = [self class];
+    NSLog(@"className: %@",[RuntimeKit fetchClassName:class]);
+    NSLog(@"IvarList: %@",[RuntimeKit fetchIvarList:class]);
+    NSLog(@"fetchPropertyList:%@",[RuntimeKit fetchPropertyList:class]);
+    NSLog(@"fetchMethodList:%@",[RuntimeKit fetchMethodList:class]);
+    NSLog(@"fetchProtocolList:%@",[RuntimeKit fetchProtocolList:class]);
     
 }
 
