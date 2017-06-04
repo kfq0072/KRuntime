@@ -1,33 +1,12 @@
-# KRuntime
-about the runtime knowledge
-感谢原作者  兴宇是谁 的分享
 
 iOS~runtime理解
 
-Runtime是想要做好iOS开发，或者说是真正的深刻的掌握OC这门语言所必需理解的东西。最近在学习Runtime，有自己的一些心得，整理如下，
-一为 查阅方便
-二为 或许能给他人一些启发，
-三为 希望得到大家对这篇整理不足之处的一些指点。
-什么是Runtime
+这几天有空整理一下Runtime相关知识
+什么是Runtime---运行时
 我们写的代码在程序运行过程中都会被转化成runtime的C代码执行，例如[target doSomething];会被转化成objc_msgSend(target, @selector(doSomething));。
-OC中一切都被设计成了对象，我们都知道一个类被初始化成一个实例，这个实例是一个对象。实际上一个类本质上也是一个对象，在runtime中用结构体表示。
-相关的定义：
-/// 描述类中的一个方法
-typedef struct objc_method *Method;
-
-/// 实例变量
-typedef struct objc_ivar *Ivar;
-
-/// 类别Category
-typedef struct objc_category *Category;
-
-/// 类中声明的属性
-typedef struct objc_property *objc_property_t;
-类在runtime中的表示
-//类在runtime中的表示
+一.类在runtime中的表示
 struct objc_class {
-Class isa;//指针，顾名思义，表示是一个什么，
-//实例的isa指向类对象，类对象的isa指向元类
+Class isa;//指针，顾名思义，表示是一个什么，实例的isa指向类对象，类对象的isa指向元类
 
 #if !__OBJC2__
 Class super_class;  //指向父类
@@ -43,7 +22,8 @@ struct objc_protocol_list *protocols //协议列表
 #endif
 } OBJC2_UNAVAILABLE;
 /* Use `Class` instead of `struct objc_class *` */
-获取列表
+
+二.常用的方法：
 有时候会有这样的需求，我们需要知道当前类中每个属性的名字（比如字典转模型，字典的Key和模型对象的属性名字不匹配）。
 我们可以通过runtime的一系列方法获取类的一些信息（包括属性列表，方法列表，成员变量列表，和遵循的协议列表）。
 
@@ -77,11 +57,9 @@ Protocol *myProtocal = protocolList[i];
 const char *protocolName = protocol_getName(myProtocal);
 NSLog(@"protocol---->%@", [NSString stringWithUTF8String:protocolName]);
 }
-在Xcode上跑一下看看输出吧，需要给你当前的类写几个属性，成员变量，方法和协议，不然获取的列表是没有东西的。
-注意，调用这些获取列表的方法别忘记导入头文件#import <objc/runtime.h>。
 
-方法调用
-让我们看一下方法调用在运行时的过程（参照前文类在runtime中的表示）
+
+三.方法调用
 
 如果用实例对象调用实例方法，会到实例的isa指针指向的对象（也就是类对象）操作。
 如果调用的是类方法，就会到类对象的isa指针指向的对象（也就是元类对象）中操作。
@@ -91,8 +69,8 @@ NSLog(@"protocol---->%@", [NSString stringWithUTF8String:protocolName]);
 如果没找到，去父类指针所指向的对象中执行1，2.
 以此类推，如果一直到根类还没找到，转向拦截调用。
 如果没有重写拦截调用的方法，程序报错。
-以上的过程给我带来的启发：
 
+以上的过程给我带来的启发：
 重写父类的方法，并没有覆盖掉父类的方法，只是在当前类对象中找到了这个方法后就不会再去父类中找了。
 如果想调用已经重写过的方法的父类的实现，只需使用super这个编译器标识，它会在运行时跳过在当前的类对象中寻找方法的过程。
 拦截调用
@@ -100,6 +78,7 @@ NSLog(@"protocol---->%@", [NSString stringWithUTF8String:protocolName]);
 那么什么是拦截调用呢。
 拦截调用就是，在找不到调用的方法程序崩溃之前，你有机会通过重写NSObject的四个方法来处理。
 
+四.消息转发
 + (BOOL)resolveClassMethod:(SEL)sel;
 + (BOOL)resolveInstanceMethod:(SEL)sel;
 //后两个方法需要转发到其他的类处理
@@ -109,6 +88,16 @@ NSLog(@"protocol---->%@", [NSString stringWithUTF8String:protocolName]);
 第二个方法和第一个方法相似，只不过处理的是实例方法。
 第三个方法是将你调用的不存在的方法重定向到一个其他声明了这个方法的类，只需要你返回一个有这个方法的target。
 第四个方法是将你调用的不存在的方法打包成NSInvocation传给你。做完你自己的处理后，调用invokeWithTarget:方法让某个target触发这个方法。
+
+五.关联对象特性：
+// 设置关联对象 
+void objc_setAssociatedObject ( id object, const void *key, id value, objc_AssociationPolicy policy );   
+// 获取关联对象 
+id objc_getAssociatedObject ( id object, const void *key ); 
+//移除关联对象 
+void objc_removeAssociatedObjects ( id object ); 
+
+
 动态添加方法
 重写了拦截调用的方法并且返回了YES，我们要怎么处理呢？
 有一个办法是根据传进来的SEL类型的selector动态添加一个方法。
@@ -233,13 +222,4 @@ NSLog(@"viewWillAppear");
 }
 Run起来看看输出吧！
 
-我的理解：
-
-方法交换对于我来说更像是实现一种思想的最佳技术：AOP面向切面编程。
-既然是切面，就一定不要忘记，交换完再调回自己。
-一定要保证只交换一次，否则就会很乱。
-最后，据说这个技术很危险，谨慎使用。
-完
-推荐拓展阅读
-著作权归作者所有
 

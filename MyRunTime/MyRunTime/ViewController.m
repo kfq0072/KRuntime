@@ -29,7 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [GetIMP testGetIMPFormSelector];
     
     [self testRuntimeCategroy];
