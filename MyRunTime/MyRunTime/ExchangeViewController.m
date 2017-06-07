@@ -9,7 +9,7 @@
 #import "ExchangeViewController.h"
 
 @implementation ExchangeViewController
-- (void)ExchangeMethodFunction:(id)param {
+- (void)ExchangeVCFunction:(id)param {
     NSLog(@"%s,参数：%@",__FUNCTION__,param);
 }
 

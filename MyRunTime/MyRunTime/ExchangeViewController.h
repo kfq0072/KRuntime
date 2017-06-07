@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ExchangeViewController : UIViewController
-
+- (void)ExchangeVCFunction:(id)param;
 @end

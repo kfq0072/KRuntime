@@ -53,20 +53,21 @@
 +(BOOL)resolveClassMethod:(SEL)sel {
     return YES;
 }
-//1.对应的实例方法
+//1.可以动态指向另外一个方法，如果不指向，return no,则会调用下一个函数forwardingTargetForSelector
 +(BOOL)resolveInstanceMethod:(SEL)sel {
-    //可以动态指向另外一个方法
-    if (sel == @selector(ExchangeVCFunction:)) {
-        class_addMethod([self class], sel, (IMP)dynamic_show, "v@:@");
-         return YES;
-    }
-    return [super resolveInstanceMethod:sel];
-   
+//    if (sel == @selector(ExchangeVCFunction:)) {
+//        class_addMethod([self class], sel, (IMP)dynamic_show, "v@:@");
+//         return YES;
+//    }
+//    return [super resolveInstanceMethod:sel];
+
+    return NO;
 }
 
-//2.转给目标target，这个对象执行aSelector方法
+//2.可以转个ExchangeViewController的实例对象，这个对象执行aSelector方法,如果return nil,则会调用methodSignatureForSelector 转给目标target，
 - (id)forwardingTargetForSelector:(SEL)aSelector {
-    return [ExchangeViewController new];
+//    return [ExchangeViewController new];
+    return nil;
 }
 //3.尝试获得一个方法签名。如果获取不到，则直接调用doesNotRecognizeSelector抛出异常。如果能获取，则返回非nil：创建一个 NSlnvocation 并传给forwardInvocation:
 -(NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
