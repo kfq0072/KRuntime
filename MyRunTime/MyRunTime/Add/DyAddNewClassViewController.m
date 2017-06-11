@@ -63,9 +63,8 @@
     class_addProperty(kclass, "name", attrs, 3);
     
     //添加方法
-    class_addMethod(kclass, @selector(setFatherName:), (IMP)setFatherName, "v@:@");
     class_addMethod(kclass, @selector(getFatherName), (IMP)getFatherName, "v@:");
-    
+    [RuntimeKit addMethod:kclass method:@selector(setFatherName:) methodImp:@selector(setFatherName:)];
     //TODO:添加协议
 //    class_addProtocol(kclass, fatherp)
     objc_registerClassPair(kclass);

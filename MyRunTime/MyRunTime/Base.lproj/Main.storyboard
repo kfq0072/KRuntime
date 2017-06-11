@@ -115,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="1625" y="187"/>
         </scene>
-        <!--Add New View Controller-->
+        <!--Dy Add New Class View Controller-->
         <scene sceneID="xSF-UL-5w0">
             <objects>
-                <viewController id="p12-5P-MXJ" customClass="AddNewViewController" sceneMemberID="viewController">
+                <viewController id="p12-5P-MXJ" customClass="DyAddNewClassViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UhK-W4-oGE"/>
                         <viewControllerLayoutGuide type="bottom" id="QN6-F8-uWl"/>

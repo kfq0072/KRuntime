@@ -92,7 +92,6 @@ void dynamic_show(id self ,SEL _cmd,id param1) {
     NSLog(@"动态添加方法:%@",param1);
 }
 
-
 - (IBAction)BtnAction:(id)sender {
 
     Class class = [self class];
